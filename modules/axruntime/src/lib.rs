@@ -122,7 +122,7 @@ pub fn rust_main(cpu_id: usize, arg: usize) -> ! {
         axconfig::PLATFORM,
         option_env!("AX_TARGET").unwrap_or(""),
         option_env!("AX_MODE").unwrap_or(""),
-        option_env!("AX_LOG").unwrap_or(""),
+        get_log_level(),
         axconfig::plat::CPU_NUM,
     );
     #[cfg(feature = "rtc")]
@@ -132,7 +132,7 @@ pub fn rust_main(cpu_id: usize, arg: usize) -> ! {
     );
 
     axlog::init();
-    axlog::set_max_level(option_env!("AX_LOG").unwrap_or("")); // no effect if set `log-level-*` features
+    axlog::set_max_level(get_log_level());
     info!("Logging is enabled.");
     info!("Primary CPU {} started, arg = {:#x}.", cpu_id, arg);
 
@@ -279,4 +279,8 @@ fn init_tls() {
     let main_tls = axhal::tls::TlsArea::alloc();
     unsafe { axhal::asm::write_thread_pointer(main_tls.tls_ptr() as usize) };
     core::mem::forget(main_tls);
+}
+
+fn get_log_level() -> &'static str {
+    option_env!("AX_LOG").unwrap_or(axlog::get_static_max_level().as_str())
 }

@@ -260,3 +260,7 @@ pub fn set_max_level(level: &str) {
         .unwrap_or(LevelFilter::Off);
     log::set_max_level(lf);
 }
+
+pub fn get_static_max_level() -> LevelFilter {
+    log::STATIC_MAX_LEVEL
+}
