@@ -177,6 +177,13 @@ dependencies = [
 ]
 
 [[package]]
+name = "arceos-std-httpclient"
+version = "0.1.0"
+dependencies = [
+ "arceos-rust",
+]
+
+[[package]]
 name = "arceos_api"
 version = "0.2.0"
 dependencies = [
