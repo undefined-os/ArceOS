@@ -19,6 +19,8 @@ documentation = "https://arceos-org.github.io/arceos/arceos_posix_api/index.html
 [features]
 default = []
 
+use-hermit-types = []
+
 smp = ["axfeat/smp"]
 irq = ["axfeat/irq"]
 alloc = ["dep:axalloc", "axfeat/alloc"]
