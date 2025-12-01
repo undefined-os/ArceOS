@@ -1,7 +1,9 @@
 mod stdio;
 
 pub mod io;
+#[cfg(not(feature = "use-hermit-types"))]
 pub mod resources;
+#[cfg(not(feature = "use-hermit-types"))]
 pub mod sys;
 pub mod task;
 pub mod time;

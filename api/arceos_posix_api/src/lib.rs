@@ -26,12 +26,22 @@ pub mod config {
 
 /// POSIX C types.
 #[rustfmt::skip]
-#[path = "./ctypes_gen.rs"]
-#[allow(dead_code, non_snake_case, non_camel_case_types, non_upper_case_globals, clippy::upper_case_acronyms, missing_docs)]
-pub mod ctypes;
+#[allow(nonstandard_style, dead_code, missing_docs)]
+pub mod ctypes_gen;
+
+#[cfg(not(feature = "use-hermit-types"))]
+pub use self::ctypes_gen as ctypes;
+
+#[cfg(feature = "use-hermit-types")]
+mod hermit_abi;
+
+#[cfg(feature = "use-hermit-types")]
+pub use hermit_abi::hermit_types as ctypes;
 
 pub use imp::io::{sys_read, sys_write, sys_writev};
+#[cfg(not(feature = "use-hermit-types"))]
 pub use imp::resources::{sys_getrlimit, sys_setrlimit};
+#[cfg(not(feature = "use-hermit-types"))]
 pub use imp::sys::sys_sysconf;
 pub use imp::task::{sys_exit, sys_getpid, sys_sched_yield};
 pub use imp::time::{sys_clock_gettime, sys_nanosleep};
