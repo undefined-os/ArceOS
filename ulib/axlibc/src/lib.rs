@@ -122,3 +122,14 @@ pub use self::io_mpx::{epoll_create, epoll_ctl, epoll_wait};
 
 #[cfg(feature = "fp-simd")]
 pub use self::strtod::{strtod, strtof};
+
+unsafe extern "C" {
+    fn main();
+}
+
+#[unsafe(no_mangle)]
+fn __app_main() {
+    unsafe {
+        main();
+    }
+}
