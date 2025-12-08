@@ -173,6 +173,7 @@ dependencies = [
  "axio",
  "axruntime",
  "kspin",
+ "log",
  "rand",
 ]
 
