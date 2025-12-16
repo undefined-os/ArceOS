@@ -7,6 +7,42 @@ pub type size_t = usize;
 /// A thread handle type
 pub type Tid = u32;
 
+/// pthread type (opaque pointer)
+pub type pthread_t = *mut c_void;
+
+/// pthread attribute type (simplified for hermit)
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct pthread_attr_t {
+    _opaque: [u8; 56], // Match the size from ctypes_gen
+}
+
+impl Default for pthread_attr_t {
+    fn default() -> Self {
+        pthread_attr_t { _opaque: [0; 56] }
+    }
+}
+
+/// pthread mutex type
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct pthread_mutex_t {
+    pub __l: [::core::ffi::c_long; 5usize],
+}
+
+impl Default for pthread_mutex_t {
+    fn default() -> Self {
+        pthread_mutex_t { __l: [0; 5] }
+    }
+}
+
+/// pthread mutex attribute type
+#[repr(C)]
+#[derive(Debug, Default, Copy, Clone)]
+pub struct pthread_mutexattr_t {
+    pub __attr: ::core::ffi::c_uint,
+}
+
 /// Maximum number of priorities
 pub const NO_PRIORITIES: usize = 31;
 

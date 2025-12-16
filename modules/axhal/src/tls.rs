@@ -175,7 +175,7 @@ fn tls_area_size() -> usize {
 
 unsafe fn init_tcb(tls_area: *mut u8) {
     if cfg!(target_arch = "x86_64") {
-        let tp_addr = tls_area.add(tp_offset()).cast::<usize>();
-        tp_addr.write(tp_addr as usize); // write self pointer
+        let tp_addr = unsafe { tls_area.add(tp_offset()).cast::<usize>() };
+        unsafe { tp_addr.write(tp_addr as usize) }; // write self pointer
     }
 }
