@@ -47,6 +47,9 @@ sched-fifo = []
 sched-rr = []
 sched-cfs = []
 
+# Sync
+sync = []
+
 # File system
 fd = []
 fs = []

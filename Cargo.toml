@@ -36,6 +36,8 @@ members = [
     "examples/std/httpclient",
     "examples/std/httpserver",
     "examples/std/thread_test",
+    "examples/std/futex",
+    "examples/std/futex-bitset",
 ]
 
 [workspace.package]

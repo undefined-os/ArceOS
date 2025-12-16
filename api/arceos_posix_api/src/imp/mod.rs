@@ -20,3 +20,5 @@ pub mod net;
 pub mod pipe;
 #[cfg(feature = "multitask")]
 pub mod pthread;
+#[cfg(feature = "sync")]
+pub mod sync;

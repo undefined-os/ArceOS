@@ -51,6 +51,9 @@ sched-fifo = ["axfeat/sched-fifo"]
 sched-rr = ["axfeat/sched-rr"]
 sched-cfs = ["axfeat/sched-cfs"]
 
+# Sync
+sync = ["arceos_posix_api/sync"]
+
 # File system
 fd = ["arceos_posix_api/fd"]
 fs = ["arceos_api/fs", "axfeat/fs"]
@@ -90,3 +93,9 @@ axruntime = { workspace = true }
 axio = "0.1"
 kspin = "0.1"
 rand = { version = "0.9.2", default-features = false, features = ["small_rng"] }
+linux-raw-sys = { version = "0.9.3", default-features = false, features = [
+    "no_std",
+    "general",
+    "prctl",
+    "system",
+] }

@@ -32,6 +32,7 @@ pipe = ["fd"]
 select = ["fd"]
 epoll = ["fd"]
 uspace = ["axns/thread-local"]
+sync = ["alloc", "multitask", "linux-raw-sys"]
 
 [dependencies]
 # ArceOS modules
@@ -55,6 +56,12 @@ static_assertions = "1.1.0"
 spin = { version = "0.10" }
 lazy_static = { version = "1.5", features = ["spin_no_std"] }
 ctor_bare = "0.2"
+linux-raw-sys = { version = "0.9.3", default-features = false, features = [
+    "no_std",
+    "general",
+    "prctl",
+    "system",
+], optional = true }
 
 [build-dependencies]
 bindgen ={ version = "0.72" }
