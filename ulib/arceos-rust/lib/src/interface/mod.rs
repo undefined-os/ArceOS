@@ -8,3 +8,6 @@ mod task;
 #[cfg(feature = "multitask")]
 mod thread;
 mod util;
+// FS module is only available when fs feature is enabled
+#[cfg(feature = "fs")]
+mod fs;

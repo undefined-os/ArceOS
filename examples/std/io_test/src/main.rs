@@ -7,6 +7,45 @@ use std::io::{self, Read, Write, Seek, SeekFrom, BufReader, BufWriter, BufRead};
 use std::path::Path;
 use std::time::SystemTime;
 
+/// Custom implementation of remove_dir_all since HermitCore std doesn't support it.
+/// This recursively removes a directory and all its contents.
+fn remove_dir_all_custom<P: AsRef<Path>>(path: P) -> io::Result<()> {
+    let path = path.as_ref();
+    
+    if !path.exists() {
+        return Err(io::Error::new(io::ErrorKind::NotFound, "path not found"));
+    }
+    
+    if path.is_dir() {
+        // First, recursively remove all contents
+        for entry in fs::read_dir(path)? {
+            let entry = entry?;
+            let file_name = entry.file_name();
+            
+            // Skip "." and ".." entries to avoid infinite recursion
+            if file_name == "." || file_name == ".." {
+                continue;
+            }
+            
+            let entry_path = entry.path();
+            let file_type = entry.file_type()?;
+            
+            if file_type.is_dir() {
+                remove_dir_all_custom(&entry_path)?;
+            } else {
+                fs::remove_file(&entry_path)?;
+            }
+        }
+        // Then remove the empty directory
+        fs::remove_dir(path)?;
+    } else {
+        // If it's a file, just remove it
+        fs::remove_file(path)?;
+    }
+    
+    Ok(())
+}
+
 fn main() -> io::Result<()> {
     println!("=== Rust 文件读写功能测试 ===\n");
 
@@ -312,6 +351,13 @@ fn read_directory() -> io::Result<()> {
     fn read_dir_recursive(path: &Path, indent: usize) -> io::Result<()> {
         for entry in fs::read_dir(path)? {
             let entry = entry?;
+            let file_name = entry.file_name();
+            
+            // Skip "." and ".." entries to avoid infinite recursion
+            if file_name == "." || file_name == ".." {
+                continue;
+            }
+            
             let entry_path = entry.path();
 
             let prefix = "  ".repeat(indent);
@@ -330,8 +376,8 @@ fn read_directory() -> io::Result<()> {
         read_dir_recursive(Path::new("test_dir"), 1)?;
     }
 
-    // 删除目录
-    fs::remove_dir_all("test_dir")?;
+    // 删除目录 (using custom implementation since HermitCore doesn't support fs::remove_dir_all)
+    remove_dir_all_custom("test_dir")?;
     println!("    已删除 test_dir 目录");
 
     Ok(())

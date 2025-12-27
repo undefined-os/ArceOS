@@ -170,10 +170,14 @@ dependencies = [
  "arceos_posix_api",
  "axerrno 0.2.2",
  "axfeat",
+ "axfs",
+ "axhal",
  "axio",
+ "axmm",
  "axruntime",
  "kspin",
  "log",
+ "memory_addr 0.2.1",
  "rand",
 ]
 
@@ -343,7 +347,7 @@ dependencies = [
  "cfg-if",
  "kspin",
  "log",
- "memory_addr",
+ "memory_addr 0.4.1",
  "percpu",
  "strum",
 ]
@@ -403,7 +407,7 @@ dependencies = [
  "linkme",
  "log",
  "loongArch64",
- "memory_addr",
+ "memory_addr 0.4.1",
  "page_table_entry",
  "page_table_multiarch",
  "percpu",
@@ -436,7 +440,7 @@ dependencies = [
  "axmm",
  "kspin",
  "log",
- "memory_addr",
+ "memory_addr 0.4.1",
 ]
 
 [[package]]
@@ -463,7 +467,7 @@ dependencies = [
  "crate_interface",
  "dma-api",
  "log",
- "memory_addr",
+ "memory_addr 0.4.1",
  "rdif-block",
  "rdif-intc",
  "rdrive",
@@ -662,7 +666,7 @@ dependencies = [
  "lazyinit",
  "linkme",
  "log",
- "memory_addr",
+ "memory_addr 0.4.1",
  "page_table_multiarch",
  "percpu",
 ]
@@ -704,7 +708,7 @@ version = "0.2.0"
 source = "git+https://github.com/arceos-hypervisor/axklib.git#7c0fc0588f978f7d75bb94f4e07477776ed37887"
 dependencies = [
  "axerrno 0.1.2",
- "memory_addr",
+ "memory_addr 0.4.1",
  "trait-ffi",
 ]
 
@@ -742,7 +746,7 @@ dependencies = [
  "kspin",
  "lazyinit",
  "log",
- "memory_addr",
+ "memory_addr 0.4.1",
  "memory_set",
  "page_table_multiarch",
 ]
@@ -775,7 +779,7 @@ dependencies = [
  "crate_interface",
  "handler_table",
  "kspin",
- "memory_addr",
+ "memory_addr 0.4.1",
  "percpu",
 ]
 
@@ -1011,7 +1015,7 @@ dependencies = [
  "kspin",
  "lazyinit",
  "log",
- "memory_addr",
+ "memory_addr 0.4.1",
  "percpu",
 ]
 
@@ -1937,6 +1941,12 @@ checksum = "f52b00d39961fc5b2736ea853c9cc86238e165017a493d1d5c8eac6bdc4cc273"
 
 [[package]]
 name = "memory_addr"
+version = "0.2.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "4c59c2ac537a8198f50fe22e8783bdbef2011cd133d5c03748d1e5bc85c9fc4d"
+
+[[package]]
+name = "memory_addr"
 version = "0.4.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b1f0625c50adb5f6aaf47f05cae3c4dbc13a74c659241b06c4576f3d7e1da940"
@@ -1948,7 +1958,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "50a49ecd4114cf87f7e442ec5dd03bd590e7094541f987057310dbb32a6341ad"
 dependencies = [
  "axerrno 0.1.2",
- "memory_addr",
+ "memory_addr 0.4.1",
 ]
 
 [[package]]
@@ -2005,7 +2015,7 @@ checksum = "dda9891ec368fda90e4b2cc36592b4881073e25a339fe7e3eddd811f0cf6bf18"
 dependencies = [
  "aarch64-cpu 10.0.0",
  "bitflags 2.10.0",
- "memory_addr",
+ "memory_addr 0.4.1",
  "x86_64",
 ]
 
@@ -2017,7 +2027,7 @@ checksum = "9fa11a21844255e14aa6688ef0eafb058d7be19338633024fb59417f1bfb07f8"
 dependencies = [
  "bitmaps",
  "log",
- "memory_addr",
+ "memory_addr 0.4.1",
  "page_table_entry",
  "riscv",
  "x86",

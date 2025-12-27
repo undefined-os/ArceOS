@@ -41,7 +41,7 @@ alloc-slab = ["axfeat/alloc-slab"]
 alloc-buddy = ["axfeat/alloc-buddy"]
 page-alloc-64g = ["axfeat/page-alloc-64g"] # Support up to 64G memory capacity
 page-alloc-4g = ["axfeat/page-alloc-4g"] # Support up to 4G memory capacity
-paging = ["axfeat/paging"]
+paging = ["axfeat/paging", "dep:axmm", "dep:axhal", "dep:memory_addr"]
 dma = ["arceos_api/dma", "axfeat/dma"]
 tls = ["axfeat/tls"]
 
@@ -53,7 +53,7 @@ sched-cfs = ["axfeat/sched-cfs"]
 
 # File system
 fd = ["arceos_posix_api/fd"]
-fs = ["arceos_api/fs", "axfeat/fs"]
+fs = ["arceos_api/fs", "arceos_posix_api/fs", "axfeat/fs", "dep:axfs"]
 myfs = ["arceos_api/myfs", "axfeat/myfs"]
 
 # Networking
@@ -84,11 +84,15 @@ log-level-trace = []
 
 [dependencies]
 axfeat = { workspace = true }
-arceos_posix_api = { workspace = true, features = ["use-hermit-types"] }
+arceos_posix_api = { workspace = true }
 arceos_api = { workspace = true, features = ["alloc"] }
 axruntime = { workspace = true }
 axerrno = "0.2"
 axio = "0.1"
+axfs = { workspace = true, optional = true }
 kspin = "0.1"
 rand = { version = "0.9.2", default-features = false, features = ["small_rng"] }
 log = "0.4.29"
+axmm = { workspace = true, optional = true }
+axhal = { workspace = true, optional = true }
+memory_addr = { version = "0.2", optional = true }

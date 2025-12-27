@@ -5,4 +5,4 @@ edition.workspace = true
 authors = ["eternalcomet <mydragonos@outlook.com>"]
 
 [target.'cfg(target_os = "hermit")'.dependencies]
-arceos-rust = { workspace = true, default-features = true, features = ["fs", "log-level-off"] }
+arceos-rust = { workspace = true, default-features = true, features = ["fs", "log-level-info", "driver-ramdisk"] }
