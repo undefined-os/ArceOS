@@ -170,7 +170,7 @@ dependencies = [
  "arceos_posix_api",
  "axerrno 0.2.2",
  "axfeat",
- "axio",
+ "axio 0.1.2",
  "axruntime",
  "kspin",
  "log",
@@ -235,7 +235,7 @@ dependencies = [
  "axfeat",
  "axfs",
  "axhal",
- "axio",
+ "axio 0.2.0",
  "axipi",
  "axlog",
  "axmm",
@@ -255,7 +255,7 @@ dependencies = [
  "axfeat",
  "axfs",
  "axhal",
- "axio",
+ "axio 0.2.0",
  "axlog",
  "axnet",
  "axruntime",
@@ -598,7 +598,7 @@ dependencies = [
  "axfs_devfs",
  "axfs_ramfs",
  "axfs_vfs",
- "axio",
+ "axio 0.2.0",
  "axsync",
  "axtask",
  "cap_access",
@@ -680,6 +680,16 @@ dependencies = [
 
 [[package]]
 name = "axio"
+version = "0.1.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "0c99cb21b2292c193d3de0b4aef11d1f5eede7b98698c8aed3edced8d9ae5ab2"
+dependencies = [
+ "autocfg",
+ "axerrno 0.1.2",
+]
+
+[[package]]
+name = "axio"
 version = "0.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "23e797ff4cfd17460c7b8742222a2cadd72a2f4966f0057d36b5925fabf534f7"
@@ -716,7 +726,7 @@ dependencies = [
  "arceos_posix_api",
  "axerrno 0.1.2",
  "axfeat",
- "axio",
+ "axio 0.2.0",
  "bindgen 0.72.1",
 ]
 
@@ -755,7 +765,7 @@ dependencies = [
  "axdriver",
  "axerrno 0.1.2",
  "axhal",
- "axio",
+ "axio 0.2.0",
  "axsync",
  "axtask",
  "cfg-if",
@@ -975,7 +985,7 @@ dependencies = [
  "arceos_api",
  "axerrno 0.1.2",
  "axfeat",
- "axio",
+ "axio 0.2.0",
  "kspin",
  "lock_api",
 ]
