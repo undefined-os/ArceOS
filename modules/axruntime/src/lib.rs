@@ -18,6 +18,7 @@
 
 #![cfg_attr(not(test), no_std)]
 #![feature(doc_cfg)]
+#![feature(extern_item_impls)]
 
 #[macro_use]
 extern crate axlog;
@@ -42,9 +43,13 @@ const LOGO: &str = r#"
 d88P     888 888      "Y8888P  "Y8888   "Y88888P"   "Y8888P"
 "#;
 
-unsafe extern "C" {
-    /// Application's entry point.
-    fn __app_main();
+#[eii(app_entry)]
+fn app_entry() {
+    unsafe extern "C" {
+        /// Application's entry point.
+        fn main();
+    }
+    unsafe { main() };
 }
 
 struct LogIfImpl;
@@ -231,7 +236,7 @@ pub fn rust_main(cpu_id: usize, arg: usize) -> ! {
         core::hint::spin_loop();
     }
 
-    unsafe { __app_main() };
+    unsafe { app_entry() };
 
     #[cfg(feature = "multitask")]
     axtask::exit(0);

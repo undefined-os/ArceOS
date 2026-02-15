@@ -5,7 +5,7 @@ mod interface;
 
 use arceos_api::modules::axlog::{debug, info};
 use axerrno::LinuxError;
-pub use axruntime;
+use axruntime::app_entry;
 
 unsafe extern "C" {
     fn runtime_entry(argc: i32, argv: *const *const u8, env: *const *const u8) -> !;
@@ -15,8 +15,8 @@ pub(crate) fn err(error: LinuxError) -> i32 {
     -(error as i32)
 }
 
-#[unsafe(no_mangle)]
-pub fn __app_main() {
+#[app_entry]
+pub fn app_main() {
     // keep `linkme` symbols from being optimized out
     #[cfg(feature = "irq")]
     {
