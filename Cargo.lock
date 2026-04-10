@@ -1154,6 +1154,7 @@ dependencies = [
 [[package]]
 name = "axplat-riscv64-sg2002"
 version = "0.1.0"
+source = "git+https://github.com/eternalcomet/axplat-riscv64-sg2002?rev=8b442e9#8b442e9db231ea595e2c6fc34d22cc13f25a0386"
 dependencies = [
  "axconfig-macros",
  "axcpu",

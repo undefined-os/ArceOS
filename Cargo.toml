@@ -134,7 +134,7 @@ axplat-aarch64-qemu-virt = "0.3.1-pre.6"
 axplat-aarch64-raspi = "0.3.1-pre.6"
 axplat-loongarch64-qemu-virt = { git = "https://github.com/arceos-org/axplat_crates/", rev = "fbfd02d" }
 axplat-riscv64-qemu-virt = "0.3.1-pre.6"
-axplat-riscv64-sg2002 = { path = "local/axplat-riscv64-sg2002" }
+axplat-riscv64-sg2002 = { git = "https://github.com/eternalcomet/axplat-riscv64-sg2002", rev = "8b442e9"}
 axplat-x86-pc = "0.3.1-pre.6"
 axpoll = "0.1"
 bindgen = "0.72"
